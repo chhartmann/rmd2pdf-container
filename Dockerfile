@@ -24,4 +24,13 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+COPY watchfile.sh /home/vscode/watchfile.sh
+RUN chown vscode:vscode /home/vscode/watchfile.sh && \
+    chmod +x /home/vscode/watchfile.sh
+
+COPY render_cv.r /home/vscode/render_cv.r
+RUN chown vscode:vscode /home/vscode/render_cv.r
+
 RUN Rscript -e "install.packages('pagedown', repos='https://ftp.gwdg.de/pub/misc/cran/')"
+
+CMD ["/home/vscode/watchfile.sh"]
