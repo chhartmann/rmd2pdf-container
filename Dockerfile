@@ -31,6 +31,6 @@ RUN chown vscode:vscode /home/vscode/watchfile.sh && \
 COPY render_cv.r /home/vscode/render_cv.r
 RUN chown vscode:vscode /home/vscode/render_cv.r
 
-RUN Rscript -e "install.packages(c('rmarkdown', 'bookdown', 'pagedown'), repos='https://ftp.gwdg.de/pub/misc/cran/')"
+RUN Rscript -e "install.packages('pagedown')"
 
 CMD ["/home/vscode/watchfile.sh"]
